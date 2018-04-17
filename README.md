@@ -1,3 +1,5 @@
+Fork boilerplate from https://github.com/vikpe/react-webpack-typescript-starter
+
 # React Webpack Typescript Starter
 Minimal starter kit with hot module replacement (HMR) for rapid development.
 
