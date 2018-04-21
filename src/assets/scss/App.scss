@@ -1,12 +1,19 @@
-$bg-color: yellow;
-$border-color: red;
+@import "constants.scss";
+@import "structure.scss";
+@import "base.scss";
+@import "forms.scss";
 
-.app {
-  font-family: helvetica, arial, sans-serif;
-  padding: 2em;
-  border: 5px solid $border-color;
+.cartImage {
+  margin: 0 auto;
+}
 
-  p {
-    background-color: $bg-color;
+.cartContains {
+  dl {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  dd {
+    text-align: right;
   }
 }

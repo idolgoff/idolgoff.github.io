@@ -1,0 +1,10 @@
+// forms
+.error {
+  color: $red;
+}
+
+.textField {
+  .error {
+    font-size: 10px;
+  }
+}

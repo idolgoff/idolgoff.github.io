@@ -1,0 +1,51 @@
+// app structure
+.app {
+  .container {
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+
+  .rightBlock {
+    float: right;
+    width: 50%;
+    box-sizing: border-box;
+  }
+
+  .leftBlock {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+  }
+
+  .logo {
+    width: 100px;
+  }
+
+  .cart {
+    border: 1px solid $grey;
+    padding: 15px;
+  }
+}
+
+@media #{$mobile} {
+  .app {
+    .container {
+      padding: 0 15px;
+    }
+
+    .leftBlock,
+    .rightBlock {
+      width: 100%;
+      float: none;
+    }
+
+    .logo {
+      margin: 0 auto;
+    }
+
+    .cart {
+      border: none;
+      padding: 0;
+    }
+  }
+}
