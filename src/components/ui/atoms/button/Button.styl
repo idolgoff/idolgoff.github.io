@@ -1,0 +1,21 @@
+@import "../../styl/constants.styl"
+
+.button
+  font-size 16px
+  float right
+  height inputHeight
+  text-transform uppercase
+  border none
+  padding 0 30px 0 60px
+
+.primaryButton
+  composes button
+  color white
+  background pink
+
+@media mobile
+  .button
+    width 100%
+    font-size 1em
+    float none
+    padding 0 60px

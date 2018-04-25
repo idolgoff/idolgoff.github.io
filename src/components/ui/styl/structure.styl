@@ -1,0 +1,33 @@
+@import "constants.styl"
+
+// app structure
+:global
+  .app
+    .container
+      margin 0 auto
+      max-width 1290px
+      padding 0 15px
+
+    .rightBlock
+      float right
+      width 65%
+      padding-left 15px
+      box-sizing border-box
+
+    .leftBlock
+      float left
+      width 35%
+      max-width 400px
+      box-sizing border-box
+
+  @media mobile
+    .app
+      .leftBlock,
+      .rightBlock
+        width 100%
+        max-width 100%
+        float none
+        padding 0
+
+
+

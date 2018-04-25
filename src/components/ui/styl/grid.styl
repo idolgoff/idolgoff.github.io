@@ -1,0 +1,47 @@
+@import "constants.styl"
+
+:global
+  .grid
+    display flex
+
+  .grid-sm
+    display flex
+
+  .col
+    position relative
+    padding 0
+    flex 1
+    //border 1px solid grey
+
+  .col2
+    position relative
+    padding 0
+    flex 2
+    //border 1px solid grey
+
+  .col:first-of-type,
+  .col2:first-of-type
+    padding-left 0
+
+  .col:last-of-type,
+  .col2:last-of-type
+    padding-right 0
+
+  @media mobile
+    .grid
+      flex-direction column
+
+      .col,
+      .col2
+        padding 5px 0
+
+    .grid-sm
+      .col,
+      .col2
+        padding 10px
+
+      .col:first-of-type
+        padding-left 0
+
+      .col:last-of-type
+        padding-right 0

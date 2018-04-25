@@ -1,0 +1,47 @@
+@import "../../styl/constants.styl";
+
+.base
+  margin 20px auto 0
+  max-width 600px
+  display flex
+  justify-content space-around
+  align-items baseline
+
+.item
+  display flex
+  position relative
+  flex-direction column
+  align-items center
+  font-size 22px
+
+.img
+  margin 20px
+
+.check
+  position absolute
+  right 13px
+  bottom 43px
+  transition all 0.1s ease
+
+.selected
+  cursor pointer
+
+  .check
+    right 0
+    bottom 30px
+    width 26px
+
+.unselected
+  cursor pointer
+  transition all 0.5s ease
+  filter grayscale(100%)
+
+  .check
+    width 0
+
+.unselected:hover
+  filter none
+
+.error
+  composes error from "stylus-loader!../forms.styl"
+  text-align center

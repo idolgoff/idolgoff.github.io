@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans')
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+@import "constants.styl"
+
+// base classes
+:global
+  body
+    color #232323
+    font-family 'Open Sans', sans-serif
+    padding 0
+    margin 0
+
+  h1
+    font-size 2.2em
+    font-weight 400
+    text-transform uppercase
+    margin -12px 0 -14px
+
+  h2
+    font-size 1.6em
+
+  h3
+    font-size 1.4em
+    margin-top 1.25em
+    margin-bottom 0.35em
+
+  h4
+    margin 0
+    font-weight normal
+
+  p
+    font-size 14px
+    line-height 1.5em
+
+  hr
+    border none
+    height 1px
+    color grey /* old IE */
+    background-color grey  /* Modern Browsers */
+
+  a,
+  a:visited
+    color pink
+
+  a.local,
+  a.local:visited
+    text-decoration none
+    border-bottom 1px dashed #93989499
+
+  dl
+    margin 0.8em 0
+
+  dl:first-of-type
+    margin-top 1.4em
+
+  dl:last-of-type
+    margin-bottom 1.25em
+
+  .big
+    font-size 1.2em
+
+  .small
+    font-size 0.8em
+
+  .img-responsive
+    max-width 100%
+    height auto
+
+  .m-t-sm
+    margin-top 10px
+
+  .m-b-sm
+    margin-bottom 10px
+
+  .m-b-n-sm
+    margin-bottom -10px
+
+  .superArrow
+    font-size 24px
+    margin-left 50px
+    //margin-right -20px
+
+  @media mobile
+    h3
+      font-size 1.2em
+      text-align center
+      margin-top 2em
+
+    .mobile-hidden
+      display none
+
+

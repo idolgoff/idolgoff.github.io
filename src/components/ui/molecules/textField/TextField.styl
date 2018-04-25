@@ -1,0 +1,54 @@
+@import "../../styl/constants.styl";
+
+.textField
+  composes formField from "stylus-loader!../forms.styl"
+
+.okTextField
+  composes formField from "stylus-loader!../forms.styl"
+
+  &:after
+    font fa
+    position absolute
+    right 20px
+    top 15px
+    content "\f00c"
+    color pink
+    opacity 0.5
+
+.errorTextField
+  composes formField from "stylus-loader!../forms.styl"
+  composes error from "stylus-loader!../forms.styl"
+  margin-bottom -7px
+
+.placeholder
+  composes placeholder from "stylus-loader!../forms.styl"
+
+:focus ~ .placeholder,
+.placeholder.active
+  width auto
+  left 10px
+  top -6px
+  font-size 13px
+  line-height 13px
+  background white
+  padding 0 5px
+
+.help
+  position absolute
+  top 16px
+  right 16px
+  display block
+  width 14px
+  height 14px
+  border 2px solid black
+  border-radius 3px
+  opacity 0.3
+
+  &:after
+    color black
+    font fa
+    font-size 16px
+    position absolute
+    content "\f128"
+    top -1px
+    left 2px

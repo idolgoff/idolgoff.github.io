@@ -1,0 +1,30 @@
+@import "../../styl/constants.styl"
+
+.cart
+  border 1px solid grey
+  padding 0 30px 30px
+  font-size 14px
+
+.attention
+  color pink
+
+.cartImage
+  display block
+  margin 0 auto
+
+.cartContains
+  dl
+    display flex
+    justify-content space-between
+
+  dd
+    text-align: right
+
+@media mobile
+  .cart
+    padding 0
+    border none
+
+  .cartImage
+    margin 40px auto 28px
+    max-height 185px

@@ -1,0 +1,62 @@
+@import "../../styl/constants.styl";
+
+after =
+  font fa
+  position absolute
+  top 16px
+  right 20px
+  content "\f0d7"
+
+.selectField
+  composes formField from "stylus-loader!../forms.styl"
+
+  &:after
+    {after}
+    color grey
+
+  select
+    appearance none
+    -webkit-appearance none
+
+  option
+    padding 5px
+
+.okSelectField
+  composes formField from "stylus-loader!../forms.styl"
+
+  &:after
+    {after}
+    color pink
+    opacity 0.5
+
+  select
+    appearance none
+    -webkit-appearance none
+
+
+.errorSelectField
+  composes formField from "stylus-loader!../forms.styl"
+  composes error from "stylus-loader!../forms.styl"
+  margin-bottom -7px
+
+  &:after
+    {after}
+    content "\f0d7"
+    color red
+
+  select
+    appearance none
+    -webkit-appearance none
+
+.placeholder
+  composes placeholder from "stylus-loader!../forms.styl"
+
+:focus ~ .placeholder,
+.placeholder.active
+  width auto
+  left 10px
+  top -6px
+  font-size 13px
+  line-height 13px
+  background white
+  padding 0 5px

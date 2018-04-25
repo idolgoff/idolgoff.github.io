@@ -1,14 +1,18 @@
 import * as React from "react";
 import {render} from "react-dom";
+import {Provider} from "react-redux";
 import {AppContainer} from "react-hot-loader";
 import App from "./components/App";
+import {store} from "./redux/store";
 
 const rootEl = document.getElementById("root");
 
 render(
-    <AppContainer>
-        <App/>
-    </AppContainer>,
+    <Provider store={store}>
+        <AppContainer>
+            <App/>
+        </AppContainer>
+    </Provider>,
     rootEl
 );
 
@@ -18,11 +22,12 @@ declare let module: { hot: any };
 if (module.hot) {
     module.hot.accept("./components/App", () => {
         const NewApp = require("./components/App").default;
-
         render(
-            <AppContainer>
-                <NewApp/>
-            </AppContainer>,
+            <Provider store={store}>
+                <AppContainer>
+                    <NewApp/>
+                </AppContainer>
+            </Provider>,
             rootEl
         );
     });

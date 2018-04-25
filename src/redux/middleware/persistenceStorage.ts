@@ -1,6 +1,6 @@
-import {LOGIN_USER, LOGOUT_USER, UPDATE_USER} from "../actions/ActionTypes";
+import {SEND_PURCHASE} from "../actions/ActionTypes";
 
-const APPLICATION_STORAGE_KEY = "app";
+const APPLICATION_STORAGE_KEY = "testApp";
 
 const saveToStorage = data => {
     try {
@@ -21,20 +21,9 @@ export const readFromStorage = () => {
 };
 
 export const persistenceStorage = store => next => action => {
-    let user;
     switch (action.type) {
-        case LOGIN_USER:
-        case UPDATE_USER:
-            saveToStorage({
-                user: {
-                    user: action.user,
-                    isLoggedIn: true
-                }
-            });
-            break;
-        case LOGOUT_USER:
-            saveToStorage({});
-            break;
+        case SEND_PURCHASE:
+            saveToStorage({purchase: action.data});
     }
     return next(action);
 };

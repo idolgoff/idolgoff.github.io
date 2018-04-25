@@ -1,0 +1,39 @@
+@import "../../styl/constants.styl";
+
+.protection
+  text-transform uppercase
+  color green
+
+.protectionImg
+  vertical-align middle
+  margin-top: -6px
+
+.cards
+  float right
+
+@media screen and (max-width 900px)
+  .cards
+    float none
+    display block
+    margin 15px 0 5px
+
+@media mobile
+  .protection
+    font-size 0.8em
+
+:global
+  .well
+    padding 18px 30px 30px
+    background #fafafa
+    border 1px solid grey
+    margin 0 0 35px
+
+  .well
+    input,
+    select
+      background white
+
+  @media mobile
+    .well
+      padding 20px 15px
+      margin 25px -15px 35px

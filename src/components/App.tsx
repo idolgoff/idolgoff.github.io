@@ -1,7 +1,7 @@
 import * as React from "react";
-import "./../assets/scss/App.scss";
+import "./ui/styl/App.styl";
 
-import CheckoutPage from "./ui/pages/Checkout";
+import CheckoutPage from "./ui/pages/CheckoutPage";
 
 export interface AppProps {
 }
@@ -10,7 +10,7 @@ export default class App extends React.Component<AppProps, undefined> {
     render() {
         return (
             <div className="app">
-              <CheckoutPage />
+                <CheckoutPage/>
             </div>
         );
     }
