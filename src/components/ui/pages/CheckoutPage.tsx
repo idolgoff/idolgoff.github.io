@@ -177,7 +177,6 @@ const EnhancedPurchaseForm = withFormik({
             .required("First name is required!"),
         lastName: Yup.string()
             .required("Last name is required too!"),
-
         shipStreetAddress: Yup.string()
             .required("Street address is required!"),
         shipAptSuite: Yup.string(),
@@ -227,7 +226,7 @@ const EnhancedPurchaseForm = withFormik({
             }),
 
         cardNumber: Yup.string()
-            .test("111 code", "Card number is wrong!", value => value.replace(/\s/g, "").length >= 16 && value.replace(/\s/g, "").length <= 18)
+            .test("111 code", "Card number is wrong!", value => !value || value.replace(/\s/g, "").length >= 16 && value.replace(/\s/g, "").length <= 18)
             .required("Card number is required!"),
         cardSecurityCode: Yup.string()
             .min(3, "Secret code must be 3 symbols long!")
