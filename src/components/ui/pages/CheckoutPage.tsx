@@ -16,21 +16,61 @@ import AddressForm from "../organisms/addressForm/AddressForm";
 import FormText from "../atoms/formText/FormText";
 import {getPurchaseData} from "../../../redux/reducers/purchase";
 import {sendPurchase} from "../../../redux/actions/PurchaseActions";
+import * as verge from "verge";
 import {isMobile} from "../constants";
 
-const InnerPurchaseForm =
-    ({
-         values,
-         touched,
-         errors,
-         dirty,
-         setFieldValue,
-         isSubmitting,
-         handleChange,
-         handleBlur,
-         handleSubmit,
-         handleReset,
-     }) => {
+interface IInnerPurchaseFormProps {
+    values;
+    touched;
+    errors;
+    isValid;
+    isSubmitting;
+    handleChange;
+    handleBlur;
+    handleSubmit;
+    handleReset;
+    dirty?;
+    setFieldValue?;
+}
+
+class InnerPurchaseForm extends React.Component<IInnerPurchaseFormProps, {}> {
+
+    componentDidUpdate(prevProps) {
+        const {isSubmitting, isValid, errors} = this.props;
+        if (prevProps.isSubmitting && !isSubmitting && !isValid) {
+            // console.log(errors);
+            // get highest elements on the page
+            const el = Object.keys(errors).reduce((el, highest) => {
+                try {
+                    const rect1 = verge.rectangle(document.getElementById(el));
+                    const rect2 = verge.rectangle(document.getElementById(highest));
+                    // there will be negative offset
+                    highest = rect1.top < rect2.top ? el : highest;
+                } catch (e) {
+                    console.log(e);
+                }
+                return highest;
+            });
+            if (el) {
+                document.getElementById(el).scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }
+
+    render() {
+        const {
+            values,
+            touched,
+            errors,
+            dirty,
+            setFieldValue,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            handleReset,
+        } = this.props;
+
         return (
             <form onSubmit={handleSubmit}>
 
@@ -63,6 +103,7 @@ const InnerPurchaseForm =
 
                 <h3>Choose your subscription type</h3>
                 <GenderSelect
+                    id="gender"
                     value={values.gender}
                     error={errors.gender && touched.gender ? errors.gender : ""}
                     onChange={value => setFieldValue("gender", value)}
@@ -158,12 +199,14 @@ const InnerPurchaseForm =
                     className="m-b-sm"
                 >Buy now {!isMobile && <span className="superArrow">→</span>}</Button>
 
-            </form>);
-    };
+            </form>
+        );
+    }
+}
 
 const passMinLength = 8;
 const EnhancedPurchaseForm = withFormik({
-    mapPropsToValues: props => props.purchaseData,
+    mapPropsToValues: props => props["purchaseData"],
     validationSchema: props => Yup.object().shape({
         email: Yup.string()
             .email("Invalid email address")
@@ -241,7 +284,7 @@ const EnhancedPurchaseForm = withFormik({
             .required("Year is required too!"),
     }),
     handleSubmit: (values, {props, setSubmitting}) => {
-        props.sendPurchase(values);
+        props["sendPurchase"](values);
         setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -251,7 +294,7 @@ const EnhancedPurchaseForm = withFormik({
 })(InnerPurchaseForm);
 
 
-class CheckoutPage extends React.Component<{}, {}> {
+class CheckoutPage extends React.Component<{purchaseData, sendPurchase}, {}> {
 
     render() {
         return (

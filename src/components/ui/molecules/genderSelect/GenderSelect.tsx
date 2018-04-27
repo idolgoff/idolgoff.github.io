@@ -23,10 +23,11 @@ class GenderSelect extends Component<IProps, IState> {
         const {
             value = undefined,
             error = "",
-            onChange = null
+            onChange = null,
+            ...props
         } = this.props;
         return (
-            <div>
+            <div {...props}>
                 <div className={s.base}>
                     <div className={`${s.item} ${value === "female" ? s.selected : s.unselected}`}
                          onClick={() => onChange("female")}>
