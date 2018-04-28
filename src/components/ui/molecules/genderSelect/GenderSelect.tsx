@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import * as s from "./GenderSelect.styl";
 
 interface IProps {
+    id: string;
     value: string;
     error?: string;
     onChange;

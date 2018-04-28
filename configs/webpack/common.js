@@ -27,18 +27,11 @@ module.exports = {
                 ]
             },
             {
-                test: /\.scss$/,
-                loaders: [
-                    'style-loader',
-                    "css-loader?importLoaders=1",
-                    'postcss-loader',
-                    'sass-loader',
-                ],
-            },
-            {
                 test: /\.styl$/,
-                use: ['style-loader',
+                use: [
+                    {loader: 'style-loader'},
                     "css-loader?modules&importLoaders=1&sourceMap&localIdentName=[name]_[local]___[hash:base64:5],typed-css-modules",
+                    "typed-css-modules-loader?camelCase",
                     'postcss-loader?sourceMap',
                     'stylus-loader'
                 ]

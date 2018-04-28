@@ -3,10 +3,7 @@ import "./ui/styl/App.styl";
 
 import CheckoutPage from "./ui/pages/CheckoutPage";
 
-export interface AppProps {
-}
-
-export default class App extends React.Component<AppProps, undefined> {
+export default class App extends React.Component<{}, undefined> {
     render() {
         return (
             <div className="app">
