@@ -6,7 +6,7 @@ import * as s from "./SelectField.styl";
 interface IProps {
     id?: string;
     value: any;
-    values: string[] | { value: string | number; text: string }[];
+    options: string[] | { value: string | number; text: string }[];
     className?: string;
     placeholder?: string;
     error?: string | null;
@@ -22,16 +22,16 @@ export default class SelectField extends React.Component<IProps, {}> {
             ok = null,
             error = null,
             placeholder = "",
-            values,
+            options,
             ...props
         } = this.props;
 
         const className = ok ? s.okSelectField : (error ? s.errorSelectField : s.selectField);
-        const passValues = ["", ...values];
+        const passValues = ["", ...options];
 
         return (
             <div className={className}>
-                <SelectInput values={passValues} {...props}/>
+                <SelectInput options={passValues} {...props}/>
                 {placeholder &&
                 <div className={`${s.placeholder} ${this.props.value ? s.active : ""}`}>{placeholder}</div>}
                 {error && <div className="error">{error}</div>}

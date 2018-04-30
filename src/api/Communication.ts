@@ -1,9 +1,4 @@
-interface JQuery {
-    post;
-    Deferred;
-}
-
-declare const $: JQuery;
+import axios from "axios";
 
 class Communication {
 
@@ -14,22 +9,20 @@ class Communication {
     }
 
     public call(cmd: string, params: Object = {}) {
-        // console.log("call: " + cmd);
-        let d = $.Deferred();
-        $.post(this.url, (<any>Object).assign({}, {cmd: cmd}, params))
-            .then(data => {
+        return axios.post(this.url, {cmd: cmd, ...params});
+        /*.then(data => {
                 // console.log("response:", data);
                 if (data === "ok" || data.status === "ok") {
                     // console.log("response ok");
-                    d.resolve(data.data);
+                    p.resolve(data.data);
                 } else {
                     // console.log("response fail", data);
-                    d.reject(data.error || data.message);
+                    p.reject(data.error || data.message);
                 }},
-                error => d.reject(error.responseJSON.message)
+                error => p.reject(error.responseJSON.message)
             )
-            .fail(data => d.reject("Какая-то ошибка", data));
-        return d;
+            .fail(data => p.reject("Какая-то ошибка", data));
+        return p;*/
     }
 }
 
