@@ -73,7 +73,7 @@ const CardForm = props => {
                             <CardYear {...props} />
                         </div>
 
-                        {isMobile ||
+                        {!isMobile &&
                         <div className="col mobile-hidden">
                             <FormText>Exp</FormText>
                         </div>

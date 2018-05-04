@@ -1,7 +1,7 @@
 import * as React from "react";
 import {phoneRegexp} from "../../../../utils/regexp";
 import {isMobile} from "../../constants";
-import {withFormik, Form} from "formik";
+import {Form, withFormik} from "formik";
 import Yup from "yup";
 import * as verge from "verge";
 import {sendPurchase} from "../../../../redux/actions/PurchaseActions";
@@ -138,12 +138,16 @@ class InnerPurchaseForm extends React.Component<IInnerPurchaseFormProps, {}> {
     componentDidUpdate(prevProps) {
         const {isSubmitting, isValid} = this.props;
 
+        // Handle errors
         if (prevProps.isSubmitting && !isSubmitting && !isValid) {
             // Scroll to highest elements on the page
             this.scrollToErrors();
         }
     }
 
+    /**
+     * If error occurs while submitting form we should show error in visible area
+     */
     scrollToErrors = () => {
         const {errors} = this.props;
 
@@ -236,6 +240,7 @@ class InnerPurchaseForm extends React.Component<IInnerPurchaseFormProps, {}> {
                     onClick={null}
                     className="m-b-sm"
                 >Buy now {!isMobile && <span className="superArrow">→</span>}</Button>
+
             </Form>
         );
     }
